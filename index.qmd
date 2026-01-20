@@ -34,13 +34,11 @@ Nice report!
 
 ## Introduction
 
--   Rainfall prediction is challenging due to the complex and uncertain nature of weather systems, yet it is essential for environmental and disaster planning.
+Rainfall is used for environmental modelling, agricultural planning, water resources management, and natural hazard prevention among many other applications. Accurately predicting rainfall amounts is difficult as there are several variables involved that feed off each other including temperature, humidity, wind speed, and pressure. Prediction models such as statistical forecasting can account for some of this uncertainty but ultimately give a point estimate. Climate is changing and becoming more unpredictable so we need informative ways to predict rainfall.
 
--   This project addresses the problem of modeling and predicting rainfall patterns using Bayesian regression to produce both predictions and uncertainty estimates.
+Bayesian regression works similarly to classical regression but instead of having point estimates for our model parameters, we have distributions. Using this posterior distribution we can then predict with an uncertainty. There have been a few projects using Bayesian methods for rainfall/weather predictions (such as Non-parametric Bayesian regression and Classical Regression Weather Model Comparison). These projects use Bayesian modelling to gather information about environmental data.
 
--   The study is relevant as traditional regression methods often fail to capture prediction uncertainty in meteorological data.
-
--   The approach involves applying Bayesian regression to spatial–temporal rainfall data and comparing results with classical regression models through analysis and visualization.
+In this project, I will be using spatial–temporal rainfall dataset to create Bayesian regression models to model and predict rainfall as well as predict with some measure of uncertainty. Standard regression will also be used to compare our Bayesian regression. The final product will be a reproducible analysis as well as a clean presentation of the results. Skills used in this project can be applied to data science jobs.
 
 
 Cited papers [@vidya2021rainfall], [@ahmed2021rainfall]
