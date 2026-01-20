@@ -42,8 +42,6 @@ The introduction should:
 
 -   Clearly state the problem or question you're addressing.
 
-<!-- -->
-
 -   Introduce why it is relevant needs.
 
 -   Provide an overview of your approach.
@@ -66,7 +64,7 @@ to add more work...*
 
 Cite new paper [@su2012linear]
 
-## Methods
+<!--## Methods
 
 -   Detail the models or algorithms used.
 
@@ -158,4 +156,4 @@ ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total))
 
 -   Discuss the implications of your results.
 
-## References
+## References-->
