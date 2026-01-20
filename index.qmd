@@ -1,7 +1,7 @@
 ---
-title: "Writing a great story for data science projects - Fall 2025 "
+title: "Bayesian Regression for Spatial–Temporal Rainfall Prediction and Analysis - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
-author: "Student Name (Advisor: Dr. Cohen)"
+author: "Mahmudul Islam Prakash (Advisor: Dr. Cohen)"
 date: '`r Sys.Date()`'
 format:
   html:
@@ -21,7 +21,7 @@ editor:
 Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
 to edit)
 
-::: callout-important
+<!--::: callout-important
 **Remember:** Your goal is to make your audience understand and care
 about your findings. By crafting a compelling story, you can effectively
 communicate the value of your data science project.
@@ -30,7 +30,7 @@ Carefully read this template since it has instructions and tips to
 writing!
 
 Nice report!
-:::
+:::-->
 
 ## Introduction
 
