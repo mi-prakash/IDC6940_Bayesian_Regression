@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Mahmudul Islam Prakash (Advisor: Dr. Cohen)">
-<meta name="dcterms.date" content="2026-01-19">
 
 <title>Bayesian Regression for Spatial–Temporal Rainfall Prediction and Analysis - Spring 2026</title>
 <style>
@@ -2212,7 +2211,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 19, 2026</p>
+      <p class="date">Invalid Date</p>
     </div>
   </div>
   
@@ -2237,171 +2236,25 @@ Nice report!
 :::-->
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The introduction should:</p>
 <ul>
-<li><p>Develop a storyline that captures attention and maintains interest.</p></li>
-<li><p>Your audience is your peers</p></li>
-<li><p>Clearly state the problem or question you’re addressing.</p></li>
-<li><p>Introduce why it is relevant needs.</p></li>
-<li><p>Provide an overview of your approach.</p></li>
+<li><p>Rainfall prediction is challenging due to the complex and uncertain nature of weather systems, yet it is essential for environmental and disaster planning.</p></li>
+<li><p>This project addresses the problem of modeling and predicting rainfall patterns using Bayesian regression to produce both predictions and uncertainty estimates.</p></li>
+<li><p>The study is relevant as traditional regression methods often fail to capture prediction uncertainty in meteorological data.</p></li>
+<li><p>The approach involves applying Bayesian regression to spatial–temporal rainfall data and comparing results with classical regression models through analysis and visualization.</p></li>
 </ul>
-<p>Example of writing including citing references:</p>
-<p><em>This is an introduction to ….. regression, which is a non-parametric estimator that estimates the conditional expectation of two variables which is random. The goal of a kernel regression is to discover the non-linear relationship between two random variables. To discover the non-linear relationship, kernel estimator or kernel smoothing is the main method to estimate the curve for non-parametric statistics. In kernel estimator, weight function is known as kernel function <span class="citation" data-cites="efr2008">(<a href="#ref-efr2008" role="doc-biblioref">Efromovich 2008</a>)</span>. Cite this paper <span class="citation" data-cites="bro2014principal">(<a href="#ref-bro2014principal" role="doc-biblioref">Bro and Smilde 2014</a>)</span>. The GEE <span class="citation" data-cites="wang2014">(<a href="#ref-wang2014" role="doc-biblioref">M. Wang 2014</a>)</span>. The PCA <span class="citation" data-cites="daffertshofer2004pca">(<a href="#ref-daffertshofer2004pca" role="doc-biblioref">Daffertshofer et al. 2004</a>)</span></em>. Topology can be used in machine learning <span class="citation" data-cites="adams2021topology">(<a href="#ref-adams2021topology" role="doc-biblioref">Adams and Moy 2021</a>)</span></p>
-<p>For Symbolic Regression <span class="citation" data-cites="wang2019symbolic">(<a href="#ref-wang2019symbolic" role="doc-biblioref">Y. Wang, Wagner, and Rondinelli 2019</a>)</span> <em>This is my work and I want to add more work…</em></p>
-<p>Cite new paper <span class="citation" data-cites="su2012linear">(<a href="#ref-su2012linear" role="doc-biblioref">Su, Yan, and Tsai 2012</a>)</span></p>
-<!--## Methods
+<p>Cited papers <span class="citation" data-cites="vidya2021rainfall">(<a href="#ref-vidya2021rainfall" role="doc-biblioref">Vidya, Hari, et al. 2021</a>)</span>, <span class="citation" data-cites="ahmed2021rainfall">(<a href="#ref-ahmed2021rainfall" role="doc-biblioref">Ahmed and Mohamed 2021</a>)</span></p>
+</section>
+<section id="references" class="level2 unnumbered">
 
--   Detail the models or algorithms used.
-
--   Justify your choices based on the problem and data.
-
-*The common non-parametric regression model is*
-$Y_i = m(X_i) + \varepsilon_i$*, where* $Y_i$ *can be defined as the sum
-of the regression function value* $m(x)$ *for* $X_i$*. Here* $m(x)$ *is
-unknown and* $\varepsilon_i$ *some errors. With the help of this
-definition, we can create the estimation for local averaging i.e.*
-$m(x)$ *can be estimated with the product of* $Y_i$ *average and* $X_i$
-*is near to* $x$*. In other words, this means that we are discovering
-the line through the data points with the help of surrounding data
-points. The estimation formula is printed below [@R-base]:*
-
-$$
-M_n(x) = \sum_{i=1}^{n} W_n (X_i) Y_i  \tag{1}
-$$$W_n(x)$ *is the sum of weights that belongs to all real numbers.
-Weights are positive numbers and small if* $X_i$ *is far from* $x$*.*
-
-*Another equation:*
-
-$$
-y_i = \beta_0 + \beta_1 X_1 +\varepsilon_i
-$$
-
-## Analysis and Results
-
-### Data Exploration and Visualization
-
--   Describe your data sources and collection process.
-
--   Present initial findings and insights through visualizations.
-
--   Highlight unexpected patterns or anomalies.
-
-A study was conducted to determine how...
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
-```
-:::
-
-
-
-::: {.cell}
-
-```{.python .cell-code}
-import pandas as pd
-```
-:::
-
-
-
-::: {.cell}
-
-```{.r .cell-code}
-# Load Data
-kable(head(murders))
-```
-
-::: {.cell-output-display}
-
-
-|state      |abb |region | population| total|
-|:----------|:---|:------|----------:|-----:|
-|Alabama    |AL  |South  |    4779736|   135|
-|Alaska     |AK  |West   |     710231|    19|
-|Arizona    |AZ  |West   |    6392017|   232|
-|Arkansas   |AR  |South  |    2915918|    93|
-|California |CA  |West   |   37253956|  1257|
-|Colorado   |CO  |West   |    5029196|    65|
-
-
-:::
-
-```{.r .cell-code}
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
-
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-```
-
-::: {.cell-output-display}
-![](index_files/figure-html/unnamed-chunk-3-1.png){width=672}
-:::
-:::
-
-
-### Modeling and Results
-
--   Explain your data preprocessing and cleaning steps.
-
--   Present your key findings in a clear and concise manner.
-
--   Use visuals to support your claims.
-
--   **Tell a story about what the data reveals.**
-
-
-::: {.cell}
-
-:::
-
-
-### Conclusion
-
--   Summarize your key findings.
-
--   Discuss the implications of your results.
-
-## References-->
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-adams2021topology" class="csl-entry" role="listitem">
-Adams, Henry, and Michael Moy. 2021. <span>“Topology Applied to Machine Learning: From Global to Local.”</span> <em>Frontiers in Artificial Intelligence</em> 4: 668302.
+<div id="ref-ahmed2021rainfall" class="csl-entry" role="listitem">
+Ahmed, Hiyam Abobaker Yousif, and Sondos WA Mohamed. 2021. <span>“Rainfall Prediction Using Multiple Linear Regressions Model.”</span> In <em>2020 International Conference on Computer, Control, Electrical, and Electronics Engineering (ICCCEEE)</em>, 1–5. IEEE.
 </div>
-<div id="ref-bro2014principal" class="csl-entry" role="listitem">
-Bro, Rasmus, and Age K Smilde. 2014. <span>“Principal Component Analysis.”</span> <em>Analytical Methods</em> 6 (9): 2812–31.
-</div>
-<div id="ref-daffertshofer2004pca" class="csl-entry" role="listitem">
-Daffertshofer, Andreas, Claudine JC Lamoth, Onno G Meijer, and Peter J Beek. 2004. <span>“PCA in Studying Coordination and Variability: A Tutorial.”</span> <em>Clinical Biomechanics</em> 19 (4): 415–28.
-</div>
-<div id="ref-efr2008" class="csl-entry" role="listitem">
-Efromovich, S. 2008. <em>Nonparametric Curve Estimation: Methods, Theory, and Applications</em>. Springer Series in Statistics. Springer New York. <a href="https://books.google.com/books?id=mdoLBwAAQBAJ">https://books.google.com/books?id=mdoLBwAAQBAJ</a>.
-</div>
-<div id="ref-su2012linear" class="csl-entry" role="listitem">
-Su, Xiaogang, Xin Yan, and Chih-Ling Tsai. 2012. <span>“Linear Regression.”</span> <em>Wiley Interdisciplinary Reviews: Computational Statistics</em> 4 (3): 275–94.
-</div>
-<div id="ref-wang2014" class="csl-entry" role="listitem">
-Wang, Ming. 2014. <span>“Generalized Estimating Equations in Longitudinal Data Analysis: A Review and Recent Developments.”</span> <em>Advances in Statistics</em> 2014.
-</div>
-<div id="ref-wang2019symbolic" class="csl-entry" role="listitem">
-Wang, Yiqun, Nicholas Wagner, and James M Rondinelli. 2019. <span>“Symbolic Regression in Materials Science.”</span> <em>MRS Communications</em> 9 (3): 793–805.
+<div id="ref-vidya2021rainfall" class="csl-entry" role="listitem">
+Vidya, GS, VS Hari, et al. 2021. <span>“Rainfall Forecasting Using Non-Parametric Bayesian Approach.”</span> In <em>2021 Fourth International Conference on Microelectronics, Signals &amp; Systems (ICMSS)</em>, 1–4. IEEE.
 </div>
 </div></section></div></main>
 <!-- /main column -->
