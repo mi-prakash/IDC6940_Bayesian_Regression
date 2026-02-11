@@ -2,7 +2,7 @@
 title: "Bayesian Regression for Spatial–Temporal Rainfall Prediction and Analysis - Spring 2026 "
 subtitle: "This is a Report Template Quarto"
 author: "Mahmudul Islam Prakash (Advisor: Dr. Cohen)"
-date: '`r Sys.Date()`'
+date: today
 format:
   html:
     code-fold: true
