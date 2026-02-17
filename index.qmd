@@ -50,10 +50,34 @@ Beyond traditional models, Bayesian Networks offer a way to map how different we
 
 Spurred by earlier work, this study centers on Bayesian regression methods for estimating rainfall - specifically using Bayesian linear regression as a transparent, reliable starting point [@kumari2023performance], while also exploring Gaussian Process Regression due to its adaptability without rigid structural assumptions [@vidya2021rainfall; @li2021insar]. Instead of focusing solely on prediction quality, the effort prioritizes models that express uncertainty clearly, since understanding variability supports better choices in water management and climate planning.
 
-## Literature Review
 
-Early approaches for forecasting rain leaned heavily on basic regression strategies. Though straightforward, multiple linear regression helped link weather factors - like temperature, pressure, humidity, and wind speed - to rainfall amounts, proving that some patterns in precipitation could be statistically outlined (Ahmed & Mohamed, 2020). Still, a major shortcoming arises from the rigid linearity of these models, which struggle when faced with intricate, nonlinear connections in atmospheric behavior.
+#### Regression and Machine Learning Approaches for Rainfall Prediction
 
-Recent research has looked into machine learning paired with techniques for choosing features and reducing dimensions. Instead of combining every variable, some approaches filter inputs first - methods like PCA, Pearson correlation, or greedy search help narrow what matters. Kumari and team in 2023 tested multiple regression models: among them, Bayesian linear regression, neural networks, decision forests, along with basic linear regression. When tied to correlation-driven feature selection, one model stood out - notably, Bayesian linear regression scored highest across key metrics such as RMSE, MAE, and R². Unlike rigid alternatives, it handled noise better due to built-in uncertainty modeling. Performance gains came not just from algorithm choice but also how data was preprocessed. What made a difference? The mix of informed priors and selective inputs boosted reliability without sacrificing accuracy. Evidence suggests simpler models, if well-tuned, may surpass complex ones when context guides design (Kumari et al., 2023).
+Early methods for forecasting rain relied heavily on basic regression strategies. For instance, multiple linear regression helped link weather factors - temperature, pressure, dew point, wind speed - to rainfall rates, revealing modest but clear patterns in how these elements relate [@ahmed2021rainfall]. Despite this, such models struggle due to rigid assumptions built into their design. Their linearity prevents them from reflecting the tangled ways atmospheric components interact in real conditions.
+
+Recent research has looked into machine learning paired with techniques for choosing key variables and reducing data complexity. Instead of combining every available method, Kumari et al. (2023) tested various regression approaches - Bayesian linear, neural networks, decision forests, along with basic linear models - while applying strategies like principal component analysis, correlation screening, and stepwise selection [@kumari2023performance]. When predictors were filtered through correlation-driven processes, Bayesian linear regression stood out, delivering lower errors and higher explained variance across RMSE, MAE, and R² metrics. Because it integrates known patterns and accounts for variability within data, this model offers not just accurate forecasts but also more stable outcomes under different conditions. Evidence from their work suggests Bayesian frameworks benefit when guided by informed feature choices, making them resilient without sacrificing precision.
+
+
+#### Non-Parametric Bayesian Modeling with Gaussian Processes
+
+Weather patterns show high variability across locations and time, making consistent prediction through standard mathematical formulas challenging. Because of these fluctuations, researchers often turn to flexible modeling techniques that adapt without strict assumptions. Taking this direction, Vidya et al. (2021) explored Gaussian Process Regression for estimating rain levels [@vidya2021rainfall]. Their method treats precipitation records as outcomes drawn from a probabilistic function with smooth dependencies. Instead of relying on rigid structures, the system identifies trends directly from historical measurements. One standout feature lies in its ability to express confidence ranges alongside predictions. Most conventional models deliver single-valued outputs, offering no measure of reliability. By contrast, this approach quantifies doubt, reflecting how uncertain estimates can be under variable conditions.
+
+GPR's value in studying rain-linked phenomena emerges clearly through recent geophysical work. Instead of standard methods, Li et al. (2021) turned to GPR when rebuilding InSAR data on landslide movements caused by rainfall - revealing stronger accuracy where ground shifts were highly nonlinear [@li2021insar]. Because past precipitation patterns informed the model’s assumptions, timing details in surface changes became more precise, cutting down mistakes in output. Where deformation behaves unpredictably, such an approach proves especially effective. Evidence like this strengthens the case for using GPR in complex, moisture-sensitive earth systems. Though indirect, its integration with environmental memory offers a sharper lens on slow ground responses.
+
+
+<!--#### Hierarchical Bayesian Models for Rainfall Estimation and Bias Correction
+
+
+
+
+#### Bayesian Probabilistic Forecasting and Ensemble Post-Processing
+
+
+
+
+#### Bayesian Methods in Drought Analysis and Weather Prediction
+-->
+
+
 
 ## References
