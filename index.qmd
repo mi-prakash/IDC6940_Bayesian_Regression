@@ -85,7 +85,7 @@ Starting from broader uses, Bayesian approaches appear across many water and wea
 
 A wide look at how Bayesian techniques apply to rain-focused research shows uses like classification models, network-based systems, alongside runoff simulations and heavy rain evaluation [@chen2022related]. These efforts repeatedly show that such approaches help blend existing understanding with new measurements - while carrying uncertainties forward into forecasts.
 
-Besides traditional methods, some researchers suggest using Bayesian Networks to capture how different weather factors influence one another through probability. Instead of relying on single models, Babu and colleagues in 2025 merged these networks with Support Vector Machines along with linear regression techniques - this mix handled messy or partial datasets better than isolated systems. When data gets spotty, such flexible setups tend to hold up well. Because of this, working with uncertainty becomes less of a flaw and more of a feature in forecasting atmospheres.
+Besides traditional methods, some researchers suggest using Bayesian Networks to capture how different weather factors influence one another through probability. Instead of relying on single models, Babu and colleagues in 2025 merged these networks with Support Vector Machines along with linear regression techniques - this mix handled messy or partial datasets better than isolated systems [@babu2025bayesian]. When data gets spotty, such flexible setups tend to hold up well. Because of this, working with uncertainty becomes less of a flaw and more of a feature in forecasting atmospheres.
 
 
 #### Proposed Approach
