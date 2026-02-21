@@ -44,7 +44,7 @@ One key issue in studying rain patterns involves inaccuracies within observed me
 
 Besides fixed outcomes, chance-based rain forecasts now matter more for decisions where danger levels shift - like handling floods. Because past downpour patterns mix well with computer-generated weather models, updated statistical techniques sharpen predictions when storms threaten. These refined tools adjust forecast odds using old data, making warnings during rainy periods less guesswork. Results show clearer probabilities emerge just when communities need them most [@zeng2024bayesian].
 
-Despite common use elsewhere, Bayesian approaches appear frequently within hydrology and climate studies too. One deep look at how these methods forecast rain shows they manage unclear data well, bring earlier findings into current work, while shaping models for heavy downpours and water flow after rain [@chen2022related]. In much the same way, decisions around probability tools matter greatly when building rain-based indicators like SPI - researchers fit curves, weigh model rules, then pick best timings for tracking farm-level droughts [@khandelwal2023agricultural].
+Despite common use elsewhere, Bayesian approaches appear frequently within hydrology and climate studies too. One deep look at how these methods forecast rain shows they manage unclear data well, bringing earlier findings into current work, while shaping models for heavy downpours and water flow after rain [@chen2022related]. In much the same way, decisions around probability tools matter greatly when building rain-based indicators like SPI - researchers fit curves, weigh model rules, then pick best timings for tracking farm-level droughts [@khandelwal2023agricultural].
 
 Beyond traditional models, Bayesian Networks offer a way to map how different weather factors influence one another through probability. These networks, when paired with tools like Support Vector Machines or linear regression, show stronger results in forecasting under uncertain conditions [@babu2025bayesian]. Instead of ignoring uncertainty, recent advances embrace it - highlighting that predictions gain value when doubt is part of the design. Such efforts underline a shift: handling unknowns matters just as much as the forecast itself in climate science.
 
@@ -65,19 +65,34 @@ Weather patterns show high variability across locations and time, making consist
 GPR's value in studying rain-linked phenomena emerges clearly through recent geophysical work. Instead of standard methods, Li et al. (2021) turned to GPR when rebuilding InSAR data on landslide movements caused by rainfall - revealing stronger accuracy where ground shifts were highly nonlinear [@li2021insar]. Because past precipitation patterns informed the model’s assumptions, timing details in surface changes became more precise, cutting down mistakes in output. Where deformation behaves unpredictably, such an approach proves especially effective. Evidence like this strengthens the case for using GPR in complex, moisture-sensitive earth systems. Though indirect, its integration with environmental memory offers a sharper lens on slow ground responses.
 
 
-<!--#### Hierarchical Bayesian Models for Rainfall Estimation and Bias Correction
+#### Hierarchical Bayesian Models for Rainfall Estimation and Bias Correction
 
+Although forecasting is crucial, accurate rainfall estimation is challenged by biases and uncertainties in observational data sources, especially weather radar products. Using Hurricane Irma's impact in Florida as a test example, Ma and Chandrasekar (2021) introduced a layered Bayesian method to fix distortions in NEXRAD Dual-Polarization rainfall readings [@ma2020hierarchical]. Through Gaussian processes the model clearly illustrates the relation between true rainfall and radar observations while taking spatially correlated errors into consideration.
 
+Improvements exceeded 30% at validation sites when using Bayesian-corrected rainfall data instead of raw radar output - RMSE and adjusted average error both dropped significantly [@ma2020hierarchical]. In near ground reference stations, prediction quality rose further if models used spatial Gaussian processes. Hierarchical Bayesian methods proved useful in this study, especially for data fusion, uncertainty quantification, and improving the reliability of rainfall estimates during extreme events.
 
 
 #### Bayesian Probabilistic Forecasting and Ensemble Post-Processing
 
+Flood risk management and decision making rely more on probabilistic rain forecasts, especially when facing uncertain conditions. Though ensemble models offer several possible outcomes, these raw probabilities tend to be skewed or misaligned. When tested during rainy seasons, a method rooted in Bayes’ theorem reshaped those initial guesses by learning from past rain patterns. That adjustment - using old data to refine new predictions - lifted accuracy sharply, shown clearly through better Brier Scores and stronger True Skill Statistics [@zeng2024bayesian].
 
+Despite its simplicity, this method improved accuracy in near-term weather outlooks while cutting down on incorrect warnings for intense rain. Results suggest that using Bayesian techniques allows forecasters to blend historical climate patterns with current model outputs - producing estimates that better support real-world choices. Though subtle, the shift offers practical gains where precision matters most.
 
 
 #### Bayesian Methods in Drought Analysis and Weather Prediction
--->
 
+Starting from broader uses, Bayesian approaches appear across many water and weather studies. In their work, Khandelwal and team (2023) explored how different time frames affect the Standardized Precipitation Index when tracking farm-related droughts [@khandelwal2023agricultural]. Instead of relying on a single method, they merged distribution fitting with AIC and BIC rules plus regression techniques. It turned out the three-month version lined up most closely with rain patterns while showing superior model performance. This outcome underlined how decisions about probability models shape outcomes in indices built from rainfall data.
+
+A wide look at how Bayesian techniques apply to rain-focused research shows uses like classification models, network-based systems, alongside runoff simulations and heavy rain evaluation [@chen2022related]. These efforts repeatedly show that such approaches help blend existing understanding with new measurements - while carrying uncertainties forward into forecasts.
+
+Besides traditional methods, some researchers suggest using Bayesian Networks to capture how different weather factors influence one another through probability. Instead of relying on single models, Babu and colleagues in 2025 merged these networks with Support Vector Machines along with linear regression techniques - this mix handled messy or partial datasets better than isolated systems. When data gets spotty, such flexible setups tend to hold up well. Because of this, working with uncertainty becomes less of a flaw and more of a feature in forecasting atmospheres.
+
+
+#### Proposed Approach
+
+Research trends have shifted noticeably since earlier work using basic linear methods [@ahmed2021rainfall], moving instead toward adaptive techniques that handle uncertainty better - such as Bayesian and machine learning models [@kumari2023performance; @vidya2021rainfall; @ma2020hierarchical]. Although simpler forms like Bayesian linear regression remain useful due to their clarity, they share space now with more advanced options. One such option, Gaussian Process Regression, stands out by fitting complex patterns without fixed assumptions, also giving estimates of confidence [@vidya2021rainfall; @li2021insar]. What these newer systems show - even beyond individual accuracy - is how critical it is to account for doubt in predictions, especially when estimating rain [@ma2020hierarchical; @zeng2024bayesian].
+
+This work builds from those findings by applying Bayesian regression to model rainfall, prioritizing prediction accuracy along with measures of uncertainty - aligning with accepted methods in hydrology and climate research today.
 
 
 ## References
