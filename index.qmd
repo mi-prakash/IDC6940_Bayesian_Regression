@@ -6,6 +6,7 @@ date: today
 format:
   html:
     code-fold: true
+    highlight-style: dracula
 course: Capstone Projects in Data Science
 bibliography: references.bib # file contains bibtex for references
 #always_allow_html: true # this allows to get PDF with HTML features
@@ -51,35 +52,35 @@ Beyond traditional models, Bayesian Networks offer a way to map how different we
 Spurred by earlier work, this study centers on Bayesian regression methods for estimating rainfall - specifically using Bayesian linear regression as a transparent, reliable starting point [@kumari2023performance], while also exploring Gaussian Process Regression due to its adaptability without rigid structural assumptions [@vidya2021rainfall; @li2021insar]. Instead of focusing solely on prediction quality, the effort prioritizes models that express uncertainty clearly, since understanding variability supports better choices in water management and climate planning.
 
 
-#### Regression and Machine Learning Approaches for Rainfall Prediction
+### Regression and Machine Learning Approaches for Rainfall Prediction
 
 Early methods for forecasting rain relied heavily on basic regression strategies. For instance, multiple linear regression helped link weather factors - temperature, pressure, dew point, wind speed - to rainfall rates, revealing modest but clear patterns in how these elements relate [@ahmed2021rainfall]. Despite this, such models struggle due to rigid assumptions built into their design. Their linearity prevents them from reflecting the tangled ways atmospheric components interact in real conditions.
 
 Recent research has looked into machine learning paired with techniques for choosing key variables and reducing data complexity. Instead of combining every available method, Kumari et al. (2023) tested various regression approaches - Bayesian linear, neural networks, decision forests, along with basic linear models - while applying strategies like principal component analysis, correlation screening, and stepwise selection [@kumari2023performance]. When predictors were filtered through correlation-driven processes, Bayesian linear regression stood out, delivering lower errors and higher explained variance across RMSE, MAE, and R² metrics. Because it integrates known patterns and accounts for variability within data, this model offers not just accurate forecasts but also more stable outcomes under different conditions. Evidence from their work suggests Bayesian frameworks benefit when guided by informed feature choices, making them resilient without sacrificing precision.
 
 
-#### Non-Parametric Bayesian Modeling with Gaussian Processes
+### Non-Parametric Bayesian Modeling with Gaussian Processes
 
 Weather patterns show high variability across locations and time, making consistent prediction through standard mathematical formulas challenging. Because of these fluctuations, researchers often turn to flexible modeling techniques that adapt without strict assumptions. Taking this direction, Vidya et al. (2021) explored Gaussian Process Regression for estimating rain levels [@vidya2021rainfall]. Their method treats precipitation records as outcomes drawn from a probabilistic function with smooth dependencies. Instead of relying on rigid structures, the system identifies trends directly from historical measurements. One standout feature lies in its ability to express confidence ranges alongside predictions. Most conventional models deliver single-valued outputs, offering no measure of reliability. By contrast, this approach quantifies doubt, reflecting how uncertain estimates can be under variable conditions.
 
 GPR's value in studying rain-linked phenomena emerges clearly through recent geophysical work. Instead of standard methods, Li et al. (2021) turned to GPR when rebuilding InSAR data on landslide movements caused by rainfall - revealing stronger accuracy where ground shifts were highly nonlinear [@li2021insar]. Because past precipitation patterns informed the model’s assumptions, timing details in surface changes became more precise, cutting down mistakes in output. Where deformation behaves unpredictably, such an approach proves especially effective. Evidence like this strengthens the case for using GPR in complex, moisture-sensitive earth systems. Though indirect, its integration with environmental memory offers a sharper lens on slow ground responses.
 
 
-#### Hierarchical Bayesian Models for Rainfall Estimation and Bias Correction
+### Hierarchical Bayesian Models for Rainfall Estimation and Bias Correction
 
 Although forecasting is crucial, accurate rainfall estimation is challenged by biases and uncertainties in observational data sources, especially weather radar products. Using Hurricane Irma's impact in Florida as a test example, Ma and Chandrasekar (2021) introduced a layered Bayesian method to fix distortions in NEXRAD Dual-Polarization rainfall readings [@ma2020hierarchical]. Through Gaussian processes the model clearly illustrates the relation between true rainfall and radar observations while taking spatially correlated errors into consideration.
 
 Improvements exceeded 30% at validation sites when using Bayesian-corrected rainfall data instead of raw radar output - RMSE and adjusted average error both dropped significantly [@ma2020hierarchical]. In near ground reference stations, prediction quality rose further if models used spatial Gaussian processes. Hierarchical Bayesian methods proved useful in this study, especially for data fusion, uncertainty quantification, and improving the reliability of rainfall estimates during extreme events.
 
 
-#### Bayesian Probabilistic Forecasting and Ensemble Post-Processing
+### Bayesian Probabilistic Forecasting and Ensemble Post-Processing
 
 Flood risk management and decision making rely more on probabilistic rain forecasts, especially when facing uncertain conditions. Though ensemble models offer several possible outcomes, these raw probabilities tend to be skewed or misaligned. When tested during rainy seasons, a method rooted in Bayes’ theorem reshaped those initial guesses by learning from past rain patterns. That adjustment - using old data to refine new predictions - lifted accuracy sharply, shown clearly through better Brier Scores and stronger True Skill Statistics [@zeng2024bayesian].
 
 Despite its simplicity, this method improved accuracy in near-term weather outlooks while cutting down on incorrect warnings for intense rain. Results suggest that using Bayesian techniques allows forecasters to blend historical climate patterns with current model outputs - producing estimates that better support real-world choices. Though subtle, the shift offers practical gains where precision matters most.
 
 
-#### Bayesian Methods in Drought Analysis and Weather Prediction
+### Bayesian Methods in Drought Analysis and Weather Prediction
 
 Starting from broader uses, Bayesian approaches appear across many water and weather studies. In their work, Khandelwal and team (2023) explored how different time frames affect the Standardized Precipitation Index when tracking farm-related droughts [@khandelwal2023agricultural]. Instead of relying on a single method, they merged distribution fitting with AIC and BIC rules plus regression techniques. It turned out the three-month version lined up most closely with rain patterns while showing superior model performance. This outcome underlined how decisions about probability models shape outcomes in indices built from rainfall data.
 
@@ -88,11 +89,75 @@ A wide look at how Bayesian techniques apply to rain-focused research shows uses
 Besides traditional methods, some researchers suggest using Bayesian Networks to capture how different weather factors influence one another through probability. Instead of relying on single models, Babu and colleagues in 2025 merged these networks with Support Vector Machines along with linear regression techniques - this mix handled messy or partial datasets better than isolated systems [@babu2025bayesian]. When data gets spotty, such flexible setups tend to hold up well. Because of this, working with uncertainty becomes less of a flaw and more of a feature in forecasting atmospheres.
 
 
-#### Proposed Approach
+### Proposed Approach
 
 Research trends have shifted noticeably since earlier work using basic linear methods [@ahmed2021rainfall], moving instead toward adaptive techniques that handle uncertainty better - such as Bayesian and machine learning models [@kumari2023performance; @vidya2021rainfall; @ma2020hierarchical]. Although simpler forms like Bayesian linear regression remain useful due to their clarity, they share space now with more advanced options. One such option, Gaussian Process Regression, stands out by fitting complex patterns without fixed assumptions, also giving estimates of confidence [@vidya2021rainfall; @li2021insar]. What these newer systems show - even beyond individual accuracy - is how critical it is to account for doubt in predictions, especially when estimating rain [@ma2020hierarchical; @zeng2024bayesian].
 
 This work builds from those findings by applying Bayesian regression to model rainfall, prioritizing prediction accuracy along with measures of uncertainty - aligning with accepted methods in hydrology and climate research today.
 
+## Data Description and Visualization
+
+The dataset used in this project is actually the Florida weather data of the **NOAA Global Surface Summary of the Year (GSOY) 2024** station data. Embedded within are station identifiers, geographic coordinates (latitude and longitude), timestamps, rainfall amounts recorded yearly in millimeters (PRCP). Because patterns shift across regions, measurements feed into models forecasting rainfall through Bayesian regression alongside comparative methods and then spatial analysis takes form from these feeds.
+
+Each row represents precipitation details of a single weather station in Florida within the dataset. The precipitation variable serves as the main response for statistical modeling, while for geospatial visualization the metadata from the station provides the spatial context needed for it. Before starting the analysis, missing entries got checked and basic cleaning steps were employed. Subsequently, exploratory summaries and visualizations were produced to comprehend the overall distribution and spatial variability of rainfall throughout the study area.
+
+### Visualization of Rainfall Distribution
+
+```{r}
+library(ggplot2)
+library(sf)
+library(dplyr)
+library(tigris)
+
+# Load data
+gsoy <- read.csv("/Users/miprakash/UWF/4 - Capsone Project/Project/IDC6940_Bayesian_Regression/code/4163416.csv")
+
+gsoy$YEAR <- as.integer(substr(gsoy$DATE, 1, 4))
+# Convert station coordinates into spatial data
+stations_sf <- st_as_sf(gsoy, coords = c("LONGITUDE", "LATITUDE"), crs = 4326)
+
+# -------------------------
+# 1) Distribution of annual precipitation across stations (2024)
+# -------------------------
+ggplot(gsoy, aes(x = PRCP)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 25,
+                 color = "white",
+                 fill = "steelblue",
+                 alpha = 0.9) +
+  geom_density(linewidth = 1, color = "black") +
+  labs(
+    title = "Distribution of Annual Precipitation (2024)",
+    x = "Precipitation (mm)",
+    y = "Density"
+  ) +
+  theme_minimal()
+
+# ------------------------------------
+# 2) Spatial visualization (Florida map)
+# ------------------------------------
+options(tigris_use_cache = TRUE)
+
+florida <- states(cb = TRUE) |>
+  filter(STUSPS == "FL") |>
+  st_transform(4326)
+
+ggplot() +
+  geom_sf(data = florida, fill = "white", color = "black") +
+  geom_sf(data = stations_sf, aes(color = PRCP), size = 1.5, alpha = 0.85) +
+  scale_color_viridis_c(option = "roma", name = "Rainfall (mm)") +
+  coord_sf(
+    xlim = st_bbox(florida)[c("xmin","xmax")],
+    ylim = st_bbox(florida)[c("ymin","ymax")]
+  ) +
+  labs(
+    title = "Spatial Distribution of Average Annual Rainfall (Florida)",
+    x = "Longitude",
+    y = "Latitude"
+  ) +
+  theme_minimal()
+```
+
+### Initial Observations
 
 ## References
