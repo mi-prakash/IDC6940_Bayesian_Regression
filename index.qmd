@@ -5,8 +5,12 @@ author: "Mahmudul Islam Prakash (Advisor: Dr. Cohen)"
 date: today
 format:
   html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
     code-fold: true
     highlight-style: dracula
+    embed-resources: true
 course: Capstone Projects in Data Science
 bibliography: references.bib # file contains bibtex for references
 #always_allow_html: true # this allows to get PDF with HTML features
@@ -19,8 +23,7 @@ editor:
     wrap: 72
 ---
 
-Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
-to edit)
+Slides: [slides.html](slides.html){target="_blank"}
 
 <!--::: callout-important
 **Remember:** Your goal is to make your audience understand and care
