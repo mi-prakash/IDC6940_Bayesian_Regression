@@ -9,7 +9,7 @@ format:
     toc-location: right
     toc-title: "On this page"
     code-fold: true
-    highlight-style: dracula
+    highlight-style: nord
     embed-resources: true
 course: Capstone Projects in Data Science
 bibliography: references.bib # file contains bibtex for references
