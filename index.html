@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Mahmudul Islam Prakash (Advisor: Dr. Cohen)">
-<meta name="dcterms.date" content="2026-02-24">
+<meta name="dcterms.date" content="2026-03-02">
 
 <title>Bayesian Regression for Spatial–Temporal Rainfall Prediction and Analysis - Spring 2026</title>
 <style>
@@ -2240,6 +2240,8 @@ vertical-align: -.125em;
   </ul></li>
   <li><a href="#data-description-and-visualization" id="toc-data-description-and-visualization" class="nav-link" data-scroll-target="#data-description-and-visualization">Data Description and Visualization</a>
   <ul class="collapse">
+  <li><a href="#dataset-structure-and-key-variables" id="toc-dataset-structure-and-key-variables" class="nav-link" data-scroll-target="#dataset-structure-and-key-variables">Dataset Structure and Key Variables</a></li>
+  <li><a href="#column-usage-in-project" id="toc-column-usage-in-project" class="nav-link" data-scroll-target="#column-usage-in-project">Column Usage in Project</a></li>
   <li><a href="#visualization-of-rainfall-distribution" id="toc-visualization-of-rainfall-distribution" class="nav-link" data-scroll-target="#visualization-of-rainfall-distribution">Visualization of Rainfall Distribution</a></li>
   <li><a href="#initial-observations" id="toc-initial-observations" class="nav-link" data-scroll-target="#initial-observations">Initial Observations</a></li>
   </ul></li>
@@ -2269,7 +2271,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 24, 2026</p>
+      <p class="date">March 2, 2026</p>
     </div>
   </div>
   
@@ -2338,6 +2340,75 @@ Nice report!
 <h2 class="anchored" data-anchor-id="data-description-and-visualization">Data Description and Visualization</h2>
 <p>The dataset used in this project is actually the Florida weather data of the <strong>NOAA Global Surface Summary of the Year (GSOY) 2024</strong> station data. Embedded within are station identifiers, geographic coordinates (latitude and longitude), timestamps, rainfall amounts recorded yearly in millimeters (PRCP). Because patterns shift across regions, measurements feed into models forecasting rainfall through Bayesian regression alongside comparative methods and then spatial analysis takes form from these feeds.</p>
 <p>Each row represents precipitation details of a single weather station in Florida within the dataset. The precipitation variable serves as the main response for statistical modeling, while for geospatial visualization the metadata from the station provides the spatial context needed for it. Before starting the analysis, missing entries got checked and basic cleaning steps were employed. Subsequently, exploratory summaries and visualizations were produced to comprehend the overall distribution and spatial variability of rainfall throughout the study area.</p>
+<section id="dataset-structure-and-key-variables" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-structure-and-key-variables">Dataset Structure and Key Variables</h3>
+<p>The NOAA Global Summary of the Year (GSOY) dataset provides annual climate summaries for weather stations. Each record represents one station for a given year. The full GSOY dataset contains dozens of climatological variables, but the key fields used in this project include:</p>
+<ul>
+<li><strong>STATION</strong> — Unique station identifier code.</li>
+<li><strong>NAME</strong> — Name of the station (e.g., city or airport).</li>
+<li><strong>LATITUDE</strong> — Geographic latitude of the station (decimal degrees).</li>
+<li><strong>LONGITUDE</strong> — Geographic longitude of the station (decimal degrees).</li>
+<li><strong>ELEVATION</strong> — Elevation of the station above sea level (meters).</li>
+<li><strong>YEAR</strong> — Year of the observation (e.g., 2024).</li>
+<li><strong>PRCP (Precipitation)</strong> — Total annual precipitation in millimeters (mm).</li>
+<li>Other available climatological variables exist (e.g., temperature averages, wind speed, degree days), but are not used in the current analysis.</li>
+</ul>
+<p>This study primarily emphasizes station location and precipitation values, as they are crucial for spatial-temporal rainfall assessment and for calibrating regression models (Bayesian and comparison models). The station coordinates allow mapping and spatial visualization of rainfall across Florida.</p>
+</section>
+<section id="column-usage-in-project" class="level3">
+<h3 class="anchored" data-anchor-id="column-usage-in-project">Column Usage in Project</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 59%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Description</th>
+<th>Usage in Project</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>STATION</td>
+<td>Unique station identifier</td>
+<td>Identifies individual weather stations</td>
+</tr>
+<tr class="even">
+<td>NAME</td>
+<td>Station name</td>
+<td>Used as metadata reference (optional)</td>
+</tr>
+<tr class="odd">
+<td>LATITUDE</td>
+<td>Geographic latitude (decimal degrees)</td>
+<td>Used for spatial mapping</td>
+</tr>
+<tr class="even">
+<td>LONGITUDE</td>
+<td>Geographic longitude (decimal degrees)</td>
+<td>Used for spatial mapping</td>
+</tr>
+<tr class="odd">
+<td>ELEVATION</td>
+<td>Elevation above sea level (meters)</td>
+<td>Potential explanatory variable (optional)</td>
+</tr>
+<tr class="even">
+<td>YEAR</td>
+<td>Extracted year from DATE</td>
+<td>Used for temporal reference</td>
+</tr>
+<tr class="odd">
+<td>PRCP</td>
+<td>Annual precipitation (millimeters)</td>
+<td>Main response variable for analysis</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="visualization-of-rainfall-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-of-rainfall-distribution">Visualization of Rainfall Distribution</h3>
 <div class="cell">
@@ -2416,6 +2487,7 @@ Nice report!
 </section>
 <section id="initial-observations" class="level3">
 <h3 class="anchored" data-anchor-id="initial-observations">Initial Observations</h3>
+<p>The distribution map shows that while fewer stations show extremely low or extremely high rainfall levels, the majority of stations report precipitation values within a moderate range. This suggests that the state’s annual precipitation varies noticeably. The geographical map demonstrates that Florida’s rainfall distribution is uneven, with some areas experiencing more precipitation than others. The use of statistical modeling, such as Bayesian regression, in the subsequent research is motivated by these preliminary patterns, which indicate that geographic location plays a significant role in explaining rainfall variability.</p>
 </section>
 </section>
 <section id="references" class="level2 unnumbered">

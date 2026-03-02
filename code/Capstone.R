@@ -1,12 +1,16 @@
-library(ggplot2)
-library(sf)
-library(dplyr)
-library(tigris)
+# All packages used in the analysis
+pkgs <- c("dplyr", "ggplot2", "sf", "tigris")
+
+sapply(pkgs, function(x){
+  if (!require(x, character.only = TRUE)) install.packages(x)
+  library(x, character.only = TRUE)
+})
 
 # Load data
 gsoy <- read.csv("/Users/miprakash/UWF/4 - Capsone Project/Project/IDC6940_Bayesian_Regression/code/4163416.csv")
 
 gsoy$YEAR <- as.integer(substr(gsoy$DATE, 1, 4))
+
 # Convert station coordinates into spatial data
 stations_sf <- st_as_sf(gsoy, coords = c("LONGITUDE", "LATITUDE"), crs = 4326)
 

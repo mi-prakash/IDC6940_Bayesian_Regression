@@ -104,6 +104,33 @@ The dataset used in this project is actually the Florida weather data of the **N
 
 Each row represents precipitation details of a single weather station in Florida within the dataset. The precipitation variable serves as the main response for statistical modeling, while for geospatial visualization the metadata from the station provides the spatial context needed for it. Before starting the analysis, missing entries got checked and basic cleaning steps were employed. Subsequently, exploratory summaries and visualizations were produced to comprehend the overall distribution and spatial variability of rainfall throughout the study area.
 
+### Dataset Structure and Key Variables
+
+The NOAA Global Summary of the Year (GSOY) dataset provides annual climate summaries for weather stations. Each record represents one station for a given year. The full GSOY dataset contains dozens of climatological variables, but the key fields used in this project include:
+
+* **STATION** — Unique station identifier code.
+* **NAME** — Name of the station (e.g., city or airport).
+* **LATITUDE** — Geographic latitude of the station (decimal degrees).
+* **LONGITUDE** — Geographic longitude of the station (decimal degrees).
+* **ELEVATION** — Elevation of the station above sea level (meters).
+* **YEAR** — Year of the observation (e.g., 2024).
+* **PRCP (Precipitation)** — Total annual precipitation in millimeters (mm).
+* Other available climatological variables exist (e.g., temperature averages, wind speed, degree days), but are not used in the current analysis.
+
+This study primarily emphasizes station location and precipitation values, as they are crucial for spatial-temporal rainfall assessment and for calibrating regression models (Bayesian and comparison models). The station coordinates allow mapping and spatial visualization of rainfall across Florida.
+
+### Column Usage in Project
+
+| Field            | Description                                         | Usage in Project |
+|------------------|-----------------------------------------------------|------------------|
+| STATION          | Unique station identifier                           | Identifies individual weather stations |
+| NAME             | Station name                                        | Used as metadata reference (optional) |
+| LATITUDE         | Geographic latitude (decimal degrees)               | Used for spatial mapping |
+| LONGITUDE        | Geographic longitude (decimal degrees)              | Used for spatial mapping |
+| ELEVATION        | Elevation above sea level (meters)                  | Potential explanatory variable (optional) |
+| YEAR             | Extracted year from DATE                            | Used for temporal reference |
+| PRCP             | Annual precipitation (millimeters)                  | Main response variable for analysis |
+
 ### Visualization of Rainfall Distribution
 
 ```{r}
@@ -162,5 +189,7 @@ ggplot() +
 ```
 
 ### Initial Observations
+
+The distribution map shows that while fewer stations show extremely low or extremely high rainfall levels, the majority of stations report precipitation values within a moderate range. This suggests that the state's annual precipitation varies noticeably. The geographical map demonstrates that Florida's rainfall distribution is uneven, with some areas experiencing more precipitation than others. The use of statistical modeling, such as Bayesian regression, in the subsequent research is motivated by these preliminary patterns, which indicate that geographic location plays a significant role in explaining rainfall variability.
 
 ## References
