@@ -192,4 +192,60 @@ ggplot() +
 
 The distribution map shows that while fewer stations show extremely low or extremely high rainfall levels, the majority of stations report precipitation values within a moderate range. This suggests that the state's annual precipitation varies noticeably. The geographical map demonstrates that Florida's rainfall distribution is uneven, with some areas experiencing more precipitation than others. The use of statistical modeling, such as Bayesian regression, in the subsequent research is motivated by these preliminary patterns, which indicate that geographic location plays a significant role in explaining rainfall variability.
 
+## Methodology
+
+This study investigates spatial variability in annual precipitation across weather stations in Florida using a Bayesian regression framework. The response variable is annual precipitation (PRCP), measured in millimeters. Predictor variables include latitude, longitude, and elevation, which represent geographic and topographic factors that influence rainfall variability. Prior to modeling, the dataset is filtered to retain stations within Florida and to remove observations with missing or invalid geographic coordinates or precipitation values. Exploratory data analysis is performed to examine the distribution of precipitation values and visualize spatial rainfall patterns.
+
+### Bayesian Linear Regression
+
+The primary analytical framework used in this study is Bayesian linear regression. Let $PRCP_i$ denote the annual precipitation at station $i$. The likelihood function assumes precipitation values follow a normal distribution:
+
+$$
+PRCP_i \sim \mathcal{N}(\mu_i, \sigma^2)
+$$
+
+where the conditional mean is defined as
+
+$$
+\mu_i = \beta_0 + \beta_1 LATITUDE_i + \beta_2 LONGITUDE_i + \beta_3 ELEVATION_i
+$$
+
+Here, $\beta_0$ represents the intercept, $\beta_1, \beta_2, \beta_3$ represent regression coefficients associated with the geographic predictors, and $\sigma^2$ represents the residual variance.
+
+In the Bayesian framework, model parameters are treated as random variables rather than fixed unknown values. Weakly informative prior distributions are assigned to the regression coefficients:
+
+$$
+\beta_j \sim \mathcal{N}(0,\tau^2)
+$$
+
+and the residual standard deviation is assigned the prior
+
+$$
+\sigma \sim \text{Half-Cauchy}(0,5)
+$$
+
+The posterior distribution of the parameters is obtained using Bayes’ theorem:
+
+$$
+p(\beta,\sigma \mid PRCP) \propto p(PRCP \mid \beta,\sigma)\,p(\beta)\,p(\sigma)
+$$
+
+Posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. Bayesian regression has been shown to perform effectively in rainfall prediction tasks while also providing interpretable probabilistic estimates (Kumari et al. 2023). Additionally, Bayesian approaches are particularly useful in meteorological applications because they explicitly account for uncertainty in parameter estimation and prediction (Ma and Chandrasekar 2020).
+
+### Uncertainty Quantification and Predictive Inference
+
+A key advantage of Bayesian regression is the ability to quantify uncertainty in model parameters and predictions. Instead of producing single-point estimates, the Bayesian model yields posterior distributions for each coefficient. Credible intervals provide probabilistic bounds on parameter estimates, allowing interpretation of the strength and direction of relationships between precipitation and geographic predictors.
+
+Posterior predictive checks are conducted to evaluate whether simulated rainfall values generated from the fitted model resemble the observed data. Similar probabilistic modeling approaches have been used in rainfall studies that incorporate spatial variability and uncertainty using Bayesian methods and Gaussian Process frameworks (Vidya et al. 2021).
+
+### Baseline Comparison
+
+Although the Bayesian regression model serves as the primary analytical framework, a classical multiple linear regression model with the same predictor structure is also estimated as a baseline comparison:
+
+$$
+PRCP = \beta_0 + \beta_1 LATITUDE + \beta_2 LONGITUDE + \beta_3 ELEVATION + \epsilon
+$$
+
+This baseline allows comparison of predictive accuracy and interpretability between classical and Bayesian approaches. While classical regression produces point estimates of coefficients, it does not naturally incorporate uncertainty in the same probabilistic manner as the Bayesian framework.
+
 ## References
