@@ -2377,18 +2377,18 @@ window.Quarto = {
   <li><a href="#bayesian-methods-in-drought-analysis-and-weather-prediction" id="toc-bayesian-methods-in-drought-analysis-and-weather-prediction" class="nav-link" data-scroll-target="#bayesian-methods-in-drought-analysis-and-weather-prediction">Bayesian Methods in Drought Analysis and Weather Prediction</a></li>
   <li><a href="#proposed-approach" id="toc-proposed-approach" class="nav-link" data-scroll-target="#proposed-approach">Proposed Approach</a></li>
   </ul></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#bayesian-linear-regression" id="toc-bayesian-linear-regression" class="nav-link" data-scroll-target="#bayesian-linear-regression">Bayesian Linear Regression</a></li>
+  <li><a href="#uncertainty-quantification-and-predictive-inference" id="toc-uncertainty-quantification-and-predictive-inference" class="nav-link" data-scroll-target="#uncertainty-quantification-and-predictive-inference">Uncertainty Quantification and Predictive Inference</a></li>
+  <li><a href="#baseline-comparison" id="toc-baseline-comparison" class="nav-link" data-scroll-target="#baseline-comparison">Baseline Comparison</a></li>
+  </ul></li>
   <li><a href="#data-description-and-visualization" id="toc-data-description-and-visualization" class="nav-link" data-scroll-target="#data-description-and-visualization">Data Description and Visualization</a>
   <ul class="collapse">
   <li><a href="#dataset-structure-and-key-variables" id="toc-dataset-structure-and-key-variables" class="nav-link" data-scroll-target="#dataset-structure-and-key-variables">Dataset Structure and Key Variables</a></li>
   <li><a href="#column-usage-in-project" id="toc-column-usage-in-project" class="nav-link" data-scroll-target="#column-usage-in-project">Column Usage in Project</a></li>
   <li><a href="#visualization-of-rainfall-distribution" id="toc-visualization-of-rainfall-distribution" class="nav-link" data-scroll-target="#visualization-of-rainfall-distribution">Visualization of Rainfall Distribution</a></li>
   <li><a href="#initial-observations" id="toc-initial-observations" class="nav-link" data-scroll-target="#initial-observations">Initial Observations</a></li>
-  </ul></li>
-  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
-  <ul class="collapse">
-  <li><a href="#bayesian-linear-regression" id="toc-bayesian-linear-regression" class="nav-link" data-scroll-target="#bayesian-linear-regression">Bayesian Linear Regression</a></li>
-  <li><a href="#uncertainty-quantification-and-predictive-inference" id="toc-uncertainty-quantification-and-predictive-inference" class="nav-link" data-scroll-target="#uncertainty-quantification-and-predictive-inference">Uncertainty Quantification and Predictive Inference</a></li>
-  <li><a href="#baseline-comparison" id="toc-baseline-comparison" class="nav-link" data-scroll-target="#baseline-comparison">Baseline Comparison</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -2479,6 +2479,48 @@ Nice report!
 <h3 class="anchored" data-anchor-id="proposed-approach">Proposed Approach</h3>
 <p>Research trends have shifted noticeably since earlier work using basic linear methods <span class="citation" data-cites="ahmed2021rainfall">(<a href="#ref-ahmed2021rainfall" role="doc-biblioref">Ahmed and Mohamed 2021</a>)</span>, moving instead toward adaptive techniques that handle uncertainty better - such as Bayesian and machine learning models <span class="citation" data-cites="kumari2023performance vidya2021rainfall ma2020hierarchical">(<a href="#ref-kumari2023performance" role="doc-biblioref">Kumari, Raza, and Kumari 2023</a>; <a href="#ref-vidya2021rainfall" role="doc-biblioref">Vidya, Hari, et al. 2021</a>; <a href="#ref-ma2020hierarchical" role="doc-biblioref">Ma and Chandrasekar 2020</a>)</span>. Although simpler forms like Bayesian linear regression remain useful due to their clarity, they share space now with more advanced options. One such option, Gaussian Process Regression, stands out by fitting complex patterns without fixed assumptions, also giving estimates of confidence <span class="citation" data-cites="vidya2021rainfall li2021insar">(<a href="#ref-vidya2021rainfall" role="doc-biblioref">Vidya, Hari, et al. 2021</a>; <a href="#ref-li2021insar" role="doc-biblioref">Li et al. 2021</a>)</span>. What these newer systems show - even beyond individual accuracy - is how critical it is to account for doubt in predictions, especially when estimating rain <span class="citation" data-cites="ma2020hierarchical zeng2024bayesian">(<a href="#ref-ma2020hierarchical" role="doc-biblioref">Ma and Chandrasekar 2020</a>; <a href="#ref-zeng2024bayesian" role="doc-biblioref">Zeng et al. 2024</a>)</span>.</p>
 <p>This work builds from those findings by applying Bayesian regression to model rainfall, prioritizing prediction accuracy along with measures of uncertainty - aligning with accepted methods in hydrology and climate research today.</p>
+</section>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<p>This study investigates spatial variability in annual precipitation across weather stations in Florida using a Bayesian regression framework. The response variable is annual precipitation (PRCP), measured in millimeters. Predictor variables include latitude, longitude, and elevation, which represent geographic and topographic factors that influence rainfall variability. Prior to modeling, the dataset is filtered to retain stations within Florida and to remove observations with missing or invalid geographic coordinates or precipitation values. Exploratory data analysis is performed to examine the distribution of precipitation values and visualize spatial rainfall patterns.</p>
+<section id="bayesian-linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-linear-regression">Bayesian Linear Regression</h3>
+<p>The primary analytical framework used in this study is Bayesian linear regression. Let <span class="math inline">\(PRCP_i\)</span> denote the annual precipitation at station <span class="math inline">\(i\)</span>. The likelihood function assumes precipitation values follow a normal distribution:</p>
+<p><span class="math display">\[
+PRCP_i \sim \mathcal{N}(\mu_i, \sigma^2)
+\]</span></p>
+<p>where the conditional mean is defined as</p>
+<p><span class="math display">\[
+\mu_i = \beta_0 + \beta_1 LATITUDE_i + \beta_2 LONGITUDE_i + \beta_3 ELEVATION_i
+\]</span></p>
+<p>Here, <span class="math inline">\(\beta_0\)</span> represents the intercept, <span class="math inline">\(\beta_1, \beta_2, \beta_3\)</span> represent regression coefficients associated with the geographic predictors, and <span class="math inline">\(\sigma^2\)</span> represents the residual variance.</p>
+<p>In the Bayesian framework, model parameters are treated as random variables rather than fixed unknown values. Weakly informative prior distributions are assigned to the regression coefficients:</p>
+<p><span class="math display">\[
+\beta_j \sim \mathcal{N}(0,\tau^2)
+\]</span></p>
+<p>and the residual standard deviation is assigned the prior</p>
+<p><span class="math display">\[
+\sigma \sim \text{Half-Cauchy}(0,5)
+\]</span></p>
+<p>The posterior distribution of the parameters is obtained using Bayes’ theorem:</p>
+<p><span class="math display">\[
+p(\beta,\sigma \mid PRCP) \propto p(PRCP \mid \beta,\sigma)\,p(\beta)\,p(\sigma)
+\]</span></p>
+<p>Posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. Bayesian regression has been shown to perform effectively in rainfall prediction tasks while also providing interpretable probabilistic estimates <span class="citation" data-cites="kumari2023performance">(<a href="#ref-kumari2023performance" role="doc-biblioref">Kumari, Raza, and Kumari 2023</a>)</span>. Additionally, Bayesian approaches are particularly useful in meteorological applications because they explicitly account for uncertainty in parameter estimation and prediction <span class="citation" data-cites="ma2020hierarchical">(<a href="#ref-ma2020hierarchical" role="doc-biblioref">Ma and Chandrasekar 2020</a>)</span>.</p>
+</section>
+<section id="uncertainty-quantification-and-predictive-inference" class="level3">
+<h3 class="anchored" data-anchor-id="uncertainty-quantification-and-predictive-inference">Uncertainty Quantification and Predictive Inference</h3>
+<p>A key advantage of Bayesian regression is the ability to quantify uncertainty in model parameters and predictions. Instead of producing single-point estimates, the Bayesian model yields posterior distributions for each coefficient. Credible intervals provide probabilistic bounds on parameter estimates, allowing interpretation of the strength and direction of relationships between precipitation and geographic predictors.</p>
+<p>Posterior predictive checks are conducted to evaluate whether simulated rainfall values generated from the fitted model resemble the observed data. Similar probabilistic modeling approaches have been used in rainfall studies that incorporate spatial variability and uncertainty using Bayesian methods and Gaussian Process frameworks <span class="citation" data-cites="vidya2021rainfall">(<a href="#ref-vidya2021rainfall" role="doc-biblioref">Vidya, Hari, et al. 2021</a>)</span>.</p>
+</section>
+<section id="baseline-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="baseline-comparison">Baseline Comparison</h3>
+<p>Although the Bayesian regression model serves as the primary analytical framework, a classical multiple linear regression model with the same predictor structure is also estimated as a baseline comparison:</p>
+<p><span class="math display">\[
+PRCP = \beta_0 + \beta_1 LATITUDE + \beta_2 LONGITUDE + \beta_3 ELEVATION + \epsilon
+\]</span></p>
+<p>This baseline allows comparison of predictive accuracy and interpretability between classical and Bayesian approaches. While classical regression produces point estimates of coefficients, it does not naturally incorporate uncertainty in the same probabilistic manner as the Bayesian framework.</p>
 </section>
 </section>
 <section id="data-description-and-visualization" class="level2">
@@ -2633,48 +2675,6 @@ Nice report!
 <section id="initial-observations" class="level3">
 <h3 class="anchored" data-anchor-id="initial-observations">Initial Observations</h3>
 <p>The distribution map shows that while fewer stations show extremely low or extremely high rainfall levels, the majority of stations report precipitation values within a moderate range. This suggests that the state’s annual precipitation varies noticeably. The geographical map demonstrates that Florida’s rainfall distribution is uneven, with some areas experiencing more precipitation than others. The use of statistical modeling, such as Bayesian regression, in the subsequent research is motivated by these preliminary patterns, which indicate that geographic location plays a significant role in explaining rainfall variability.</p>
-</section>
-</section>
-<section id="methodology" class="level2">
-<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
-<p>This study investigates spatial variability in annual precipitation across weather stations in Florida using a Bayesian regression framework. The response variable is annual precipitation (PRCP), measured in millimeters. Predictor variables include latitude, longitude, and elevation, which represent geographic and topographic factors that influence rainfall variability. Prior to modeling, the dataset is filtered to retain stations within Florida and to remove observations with missing or invalid geographic coordinates or precipitation values. Exploratory data analysis is performed to examine the distribution of precipitation values and visualize spatial rainfall patterns.</p>
-<section id="bayesian-linear-regression" class="level3">
-<h3 class="anchored" data-anchor-id="bayesian-linear-regression">Bayesian Linear Regression</h3>
-<p>The primary analytical framework used in this study is Bayesian linear regression. Let <span class="math inline">\(PRCP_i\)</span> denote the annual precipitation at station <span class="math inline">\(i\)</span>. The likelihood function assumes precipitation values follow a normal distribution:</p>
-<p><span class="math display">\[
-PRCP_i \sim \mathcal{N}(\mu_i, \sigma^2)
-\]</span></p>
-<p>where the conditional mean is defined as</p>
-<p><span class="math display">\[
-\mu_i = \beta_0 + \beta_1 LATITUDE_i + \beta_2 LONGITUDE_i + \beta_3 ELEVATION_i
-\]</span></p>
-<p>Here, <span class="math inline">\(\beta_0\)</span> represents the intercept, <span class="math inline">\(\beta_1, \beta_2, \beta_3\)</span> represent regression coefficients associated with the geographic predictors, and <span class="math inline">\(\sigma^2\)</span> represents the residual variance.</p>
-<p>In the Bayesian framework, model parameters are treated as random variables rather than fixed unknown values. Weakly informative prior distributions are assigned to the regression coefficients:</p>
-<p><span class="math display">\[
-\beta_j \sim \mathcal{N}(0,\tau^2)
-\]</span></p>
-<p>and the residual standard deviation is assigned the prior</p>
-<p><span class="math display">\[
-\sigma \sim \text{Half-Cauchy}(0,5)
-\]</span></p>
-<p>The posterior distribution of the parameters is obtained using Bayes’ theorem:</p>
-<p><span class="math display">\[
-p(\beta,\sigma \mid PRCP) \propto p(PRCP \mid \beta,\sigma)\,p(\beta)\,p(\sigma)
-\]</span></p>
-<p>Posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. Bayesian regression has been shown to perform effectively in rainfall prediction tasks while also providing interpretable probabilistic estimates <span class="citation" data-cites="kumari2023performance">(<a href="#ref-kumari2023performance" role="doc-biblioref">Kumari, Raza, and Kumari 2023</a>)</span>. Additionally, Bayesian approaches are particularly useful in meteorological applications because they explicitly account for uncertainty in parameter estimation and prediction <span class="citation" data-cites="ma2020hierarchical">(<a href="#ref-ma2020hierarchical" role="doc-biblioref">Ma and Chandrasekar 2020</a>)</span>.</p>
-</section>
-<section id="uncertainty-quantification-and-predictive-inference" class="level3">
-<h3 class="anchored" data-anchor-id="uncertainty-quantification-and-predictive-inference">Uncertainty Quantification and Predictive Inference</h3>
-<p>A key advantage of Bayesian regression is the ability to quantify uncertainty in model parameters and predictions. Instead of producing single-point estimates, the Bayesian model yields posterior distributions for each coefficient. Credible intervals provide probabilistic bounds on parameter estimates, allowing interpretation of the strength and direction of relationships between precipitation and geographic predictors.</p>
-<p>Posterior predictive checks are conducted to evaluate whether simulated rainfall values generated from the fitted model resemble the observed data. Similar probabilistic modeling approaches have been used in rainfall studies that incorporate spatial variability and uncertainty using Bayesian methods and Gaussian Process frameworks <span class="citation" data-cites="vidya2021rainfall">(<a href="#ref-vidya2021rainfall" role="doc-biblioref">Vidya, Hari, et al. 2021</a>)</span>.</p>
-</section>
-<section id="baseline-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="baseline-comparison">Baseline Comparison</h3>
-<p>Although the Bayesian regression model serves as the primary analytical framework, a classical multiple linear regression model with the same predictor structure is also estimated as a baseline comparison:</p>
-<p><span class="math display">\[
-PRCP = \beta_0 + \beta_1 LATITUDE + \beta_2 LONGITUDE + \beta_3 ELEVATION + \epsilon
-\]</span></p>
-<p>This baseline allows comparison of predictive accuracy and interpretability between classical and Bayesian approaches. While classical regression produces point estimates of coefficients, it does not naturally incorporate uncertainty in the same probabilistic manner as the Bayesian framework.</p>
 </section>
 </section>
 <section id="references" class="level2 unnumbered">
