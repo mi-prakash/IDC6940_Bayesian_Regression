@@ -230,13 +230,13 @@ $$
 p(\beta,\sigma \mid PRCP) \propto p(PRCP \mid \beta,\sigma)\,p(\beta)\,p(\sigma)
 $$
 
-Posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. Bayesian regression has been shown to perform effectively in rainfall prediction tasks while also providing interpretable probabilistic estimates (Kumari et al. 2023). Additionally, Bayesian approaches are particularly useful in meteorological applications because they explicitly account for uncertainty in parameter estimation and prediction (Ma and Chandrasekar 2020).
+Posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. Bayesian regression has been shown to perform effectively in rainfall prediction tasks while also providing interpretable probabilistic estimates [@kumari2023performance]. Additionally, Bayesian approaches are particularly useful in meteorological applications because they explicitly account for uncertainty in parameter estimation and prediction [@ma2020hierarchical].
 
 ### Uncertainty Quantification and Predictive Inference
 
 A key advantage of Bayesian regression is the ability to quantify uncertainty in model parameters and predictions. Instead of producing single-point estimates, the Bayesian model yields posterior distributions for each coefficient. Credible intervals provide probabilistic bounds on parameter estimates, allowing interpretation of the strength and direction of relationships between precipitation and geographic predictors.
 
-Posterior predictive checks are conducted to evaluate whether simulated rainfall values generated from the fitted model resemble the observed data. Similar probabilistic modeling approaches have been used in rainfall studies that incorporate spatial variability and uncertainty using Bayesian methods and Gaussian Process frameworks (Vidya et al. 2021).
+Posterior predictive checks are conducted to evaluate whether simulated rainfall values generated from the fitted model resemble the observed data. Similar probabilistic modeling approaches have been used in rainfall studies that incorporate spatial variability and uncertainty using Bayesian methods and Gaussian Process frameworks [@vidya2021rainfall].
 
 ### Baseline Comparison
 
