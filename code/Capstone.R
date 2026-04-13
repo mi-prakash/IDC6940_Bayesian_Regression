@@ -241,10 +241,7 @@ ggplot(rmse_df, aes(x = Model, y = RMSE, fill = Model)) +
 ggplot() +
   geom_sf(data = florida, fill = "gray95", color = "black") +
   geom_sf(data = stations_sf_model, aes(color = bayes_resid), size = 2) +
-  scale_color_gradient2(
-    low = "blue", mid = "white", high = "red", midpoint = 0,
-    name = "Residual"
-  ) +
+  scale_color_viridis_c(option = "cividis", name = "Residual") +
   labs(
     title = "Spatial Distribution of Bayesian Residuals"
   ) +
@@ -257,7 +254,7 @@ ggplot() +
 ggplot() +
   geom_sf(data = florida, fill = "gray95", color = "black") +
   geom_sf(data = stations_sf_model, aes(color = bayes_pred_sd), size = 2) +
-  scale_color_viridis_c(option = "roma", name = "Posterior SD") +
+  scale_color_viridis_c(option = "magma", name = "Posterior SD") +
   labs(
     title = "Bayesian Prediction Uncertainty by Station"
   ) +
