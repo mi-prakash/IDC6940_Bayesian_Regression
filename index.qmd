@@ -179,7 +179,7 @@ The NOAA Global Summary of the Year (GSOY) dataset provides annual climate summa
 * **PRCP (Precipitation)** — Total annual precipitation in millimeters (mm).
 * Other available climatological variables exist (e.g., temperature averages, wind speed, degree days), but are not used in the current analysis.
 
-This study primarily emphasizes station location and precipitation values, as they are crucial for spatial-temporal rainfall assessment and for calibrating regression models (Bayesian and comparison models). The station coordinates allow mapping and spatial visualization of rainfall across Florida.
+This study primarily emphasizes station location and precipitation values, as they are crucial for spatial rainfall assessment and for calibrating regression models (Bayesian and comparison models). The station coordinates allow mapping and spatial visualization of rainfall across Florida.
 
 
 ### Column Usage in Project
@@ -191,7 +191,7 @@ This study primarily emphasizes station location and precipitation values, as th
 | LATITUDE         | Geographic latitude (decimal degrees)               | Used for spatial mapping |
 | LONGITUDE        | Geographic longitude (decimal degrees)              | Used for spatial mapping |
 | ELEVATION        | Elevation above sea level (meters)                  | Potential explanatory variable (optional) |
-| YEAR             | Extracted year from DATE (2024)                     | Used for temporal reference |
+| YEAR             | Extracted year from DATE (2024)                     | Used as an annual reference variable |
 | PRCP             | Annual precipitation (millimeters)                  | Main response variable for analysis |
 
 
