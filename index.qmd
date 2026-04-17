@@ -1,5 +1,5 @@
 ---
-title: "Bayesian Regression for Spatial–Temporal Rainfall Prediction and Analysis"
+title: "Bayesian Regression for Spatial Rainfall Prediction and Analysis"
 subtitle: "This is a Report Template Quarto"
 author: "Mahmudul Islam Prakash (Advisor: Dr. Cohen)"
 date: today
