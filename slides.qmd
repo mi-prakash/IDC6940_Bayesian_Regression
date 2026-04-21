@@ -1,13 +1,12 @@
 ---
-title: "Present a great story for data science projects"
-subtitle: "This is a Slide Template"
-author: "Students names (Advisor: Dr. Cohen)"
-date: '`r Sys.Date()`'
+title: "<span style='font-size: 0.75em;'>Bayesian Regression for Spatial Rainfall Prediction and Analysis</span>"
+subtitle: "<span style='font-size: 0.7em;'>A Comparative Study with Linear Regression and Uncertainty Quantification</span>"
+author: "Mahmudul Islam Prakash (Advisor: Dr. Cohen)"
+date: today
 format:
   revealjs
 course: Capstone Projects in Data Science
-bibliography: references.bib # file contains bibtex for references
-#always_allow_html: true # this allows to get PDF with HTML features
+bibliography: references.bib
 self-contained: true
 execute: 
   warning: false
@@ -17,101 +16,166 @@ editor:
     wrap: 72
 ---
 
-::: callout-important
-**Remember:** Your goal is to make your audience understand and care
-about your findings. By crafting a compelling story, you can effectively
-communicate the value of your data science project.
+## Motivation
 
-Carefully read this template since it has instructions and tips to
-writing!
+- Rainfall is critical for environmental and resource planning
+- Spatial variation is important for modeling
+- Classical regression provides point estimates
+- Rainfall prediction has been studied using linear regression and Bayesian methods [@ahmed2021rainfall; @chen2022related]
 
-More information about `revealjs`:
-<https://quarto.org/docs/reference/formats/presentations/revealjs.html>
-:::
+---
 
-## Introduction  {.smaller}
+## Project Objective
 
--   Develop a storyline that captures attention and maintains interest.
+- Model rainfall using geographic predictors
+- Compare:
+  - Linear Regression (baseline)
+  - Bayesian Regression (primary)
+- Evaluate:
+  - Prediction performance
+  - Interpretation
+  - Uncertainty quantification
 
--   Your audience is your peers
+---
 
--   Clearly state the problem or question you're addressing.
+## Dataset Overview {style="font-size: 0.8em;"}
 
--   Introduce why it is relevant needs.
+- NOAA GSOY dataset (2024)
+- Florida weather stations
+- Variables:
+  - PRCP (precipitation)
+  - Latitude
+  - Longitude
+  - Elevation
+- Data preprocessing:
+  - Filtered Florida stations
+  - Selected relevant variables
+  - Removed missing values
 
--   Provide an overview of your approach.
+---
 
-In kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
-The PCA [@daffertshofer2004pca]\*
+## Data Distribution {style="font-size: 0.7em;"}
 
-## Methods
+- Rainfall shows moderate spread
+- Suitable for regression modeling
 
--   Detail the models or algorithms used.
+![](code/images/1.Distribution of Annual Precipitation.png){fig-align="center"}
 
--   Justify your choices based on the problem and data.
+---
 
+## Spatial Rainfall Pattern {style="font-size: 0.7em;"}
 
+- Rainfall varies across Florida
+- Indicates spatial dependency
 
-## Data Exploration and Visualization
+![](code/images/2.Spatial Distribution of Avg Annual Rainfall.png){fig-align="center"}
 
--   Describe your data sources and collection process.
+---
 
--   Present initial findings and insights through visualizations.
+## Methodology {style="font-size: 0.75em;"}
 
--   Highlight unexpected patterns or anomalies.
+- Linear Regression:
+  - Baseline model
 
-## Data Exploration and Visualization {.smaller}
+- Bayesian Regression:
+  - Uses prior distributions
+  - Produces posterior distributions
+  - Captures uncertainty [@ma2020hierarchical]
 
-A study was conducted to determine how...
+**Model:**  
+PRCP ~ Latitude + Longitude + Elevation  
 
-```{r, warning=FALSE, echo=F, message=FALSE}
-# loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
-```
+- Bayesian approach enables probabilistic interpretation and uncertainty estimation
 
-```{r, warning=FALSE, echo=F}
-# Load Data
-#kable(head(murders))
+---
 
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
+## Model Fit {style="font-size: 0.7em;"}
 
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-  
+- Both models follow observed trends
+- Some variability remains
 
-```
+![](code/images/3.Observed vs Predicted Precipitation.png){fig-align="center"}
 
-## Modeling and Results
+---
 
--   Explain your data preprocessing and cleaning steps.
+## Coefficient Comparison {style="font-size: 0.7em;"}
 
--   Present your key findings in a clear and concise manner.
+- All predictors have negative effects
+- Bayesian and linear estimates are similar
 
--   Use visuals to support your claims.
+![](code/images/4.Coefficient Interval Comparison.png){fig-align="center"}
 
--   **Tell a story about what the data reveals.**
+---
 
-```{r}
+## Posterior Distributions {style="font-size: 0.7em;"}
 
-```
+- Parameters represented as distributions
+- Stable and consistent estimates
+
+![](code/images/5.Posterior Distributions of Bayesian Reg Coefficients.png){fig-align="center"}
+
+---
+
+## Model Performance {style="font-size: 0.7em;"}
+
+- RMSE values are nearly identical
+- Similar predictive performance
+
+![](code/images/6.RMSE Comparison of Models.png){fig-align="center"}
+
+---
+
+## Residual Analysis {style="font-size: 0.7em;"}
+
+- No strong spatial bias
+- Some local variation
+
+![](code/images/7.Spatial Distribution of Bayesian Residuals.png){fig-align="center"}
+
+---
+
+## Bayesian Uncertainty {style="font-size: 0.7em;"}
+
+- Shows uncertainty across locations
+- Key advantage of Bayesian approach
+
+![](code/images/8.Bayesian Prediction Uncertainty by Station.png){fig-align="center"}
+
+---
+
+## Key Findings
+
+- Rainfall varies spatially
+- Geographic variables influence precipitation
+- Bayesian and Linear models are similar
+- Comparison with baseline regression helps assess predictive performance [@kumari2023performance]
+
+---
+
+## Main Insight
+
+- Prediction accuracy is similar
+- Bayesian adds:
+  - Credible intervals
+  - Posterior distributions
+  - Uncertainty quantification
+
+---
 
 ## Conclusion
 
--   Summarize your key findings.
+- Bayesian regression enhances interpretation
+- Useful for uncertainty analysis
+- Strong tool for spatial modeling
 
--   Discuss the implications of your results.
+---
+
+## Future Work
+
+- Use multi-year data
+- Include more predictors
+- Explore advanced spatial models
+
+---
 
 ## References
