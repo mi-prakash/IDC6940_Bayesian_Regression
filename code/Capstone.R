@@ -110,7 +110,6 @@ bayes_mean <- colMeans(bayes_pred)
 
 # RMSE
 rmse_bayes <- sqrt(mean((gsoy$PRCP - bayes_mean)^2))
-rmse_bayes
 
 rmse_lm
 rmse_bayes
